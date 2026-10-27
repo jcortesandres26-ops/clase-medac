@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>¿Cómo funciona un Java Debugger?</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <h1>¿Cómo funciona un <span class="hl">Java Debugger</span>?</h1>
+    <p class="sub">Una animación paso a paso. Pulsa <strong>Siguiente</strong> para avanzar.</p>
+  </header>
+
+  <main class="stage">
+    <!-- Panel del código -->
+    <section class="panel code-panel" aria-label="Código Java">
+      <div class="panel-title">Main.java</div>
+      <pre id="code"><code><span class="line" data-line="1"><span class="ln">1</span>  public class Main {</span>
+<span class="line" data-line="2"><span class="ln">2</span>    public static void main(String[] a) {</span>
+<span class="line" data-line="3"><span class="ln">3</span>      int total = 0;</span>
+<span class="line" data-line="4"><span class="ln">4</span>      for (int i = 1; i &lt;= 3; i++) {</span>
+<span class="line" data-line="5"><span class="ln">5</span>        total = total + i;</span>
+<span class="line" data-line="6"><span class="ln">6</span>      }</span>
+<span class="line" data-line="7"><span class="ln">7</span>      System.out.println(total);</span>
+<span class="line" data-line="8"><span class="ln">8</span>    }</span>
+<span class="line" data-line="9"><span class="ln">9</span>  }</span></code></pre>
+    </section>
+
+    <!-- Panel de información (JVM, variables, pila) -->
+    <aside class="panel info-panel">
+      <div class="info-block">
+        <div class="panel-title">JVM (máquina que ejecuta)</div>
+        <div class="jvm">
+          <div class="chip" id="chipRun">▶ ejecuta</div>
+          <div class="chip paused" id="chipPause">⏸ pausada</div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="panel-title">Variables ahora</div>
+        <table class="vars">
+          <tbody>
+            <tr><td>i</td><td id="varI">—</td></tr>
+            <tr><td>total</td><td id="varTotal">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-block">
+        <div class="panel-title">Salida</div>
+        <div class="output" id="output">—</div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Explicación grande del paso actual -->
+  <section class="explain" id="explain">
+    <span class="step-badge" id="badge">Paso 0</span>
+    <p id="explainText">El debugger es una lupa. Deja que mires tu programa mientras corre, despacio.</p>
+  </section>
+
+  <!-- Controles -->
+  <nav class="controls">
+    <button id="prevBtn" class="btn">◀ Atrás</button>
+    <button id="playBtn" class="btn btn-main">▶ Reproducir</button>
+    <button id="nextBtn" class="btn">Siguiente ▶</button>
+    <button id="resetBtn" class="btn btn-ghost">↺ Reiniciar</button>
+  </nav>
+
+  <footer class="foot">
+    Un <strong>breakpoint</strong> es un punto rojo. La JVM para ahí. Tú miras las variables. Luego sigues.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
